@@ -1,5 +1,6 @@
 QT += core
 QT += gui
+QT += network
 
 CONFIG += c++11
 
@@ -12,6 +13,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp
 include(core/core.pri)
+include(network/network.pri)
+include(server/server.pri)
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings

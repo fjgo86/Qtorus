@@ -13,12 +13,12 @@ class console_out : public QTextEdit
 
     void set_type(logger::LOG_TYPE type);
     void add_log(QString s);
-    QColor background_color;
-    QColor text_color_default;
-    QColor text_color_warning;
-    QColor text_color_debug;
-    QColor text_color_error;
-    QColor text_color_critical;
+    QColor _background_color;
+    QColor _text_color_default;
+    QColor _text_color_warning;
+    QColor _text_color_debug;
+    QColor _text_color_error;
+    QColor _text_color_critical;
 
 public:
     ~console_out();

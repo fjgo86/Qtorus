@@ -9,13 +9,13 @@ console_in::console_in()
     // Reading from QSettings
     QSettings settings;
     settings.beginGroup("console_in");
-    background_color = settings.value("background_color",QColor::fromRgb(0,0,0)).value<QColor>();               // Default black background
-    text_color_default = settings.value("text_color_default", QColor::fromRgb(255,255,255)).value<QColor>();    // Default white text color
+    _background_color = settings.value("background_color",QColor::fromRgb(0,0,0)).value<QColor>();               // Default black background
+    _text_color_default = settings.value("text_color_default", QColor::fromRgb(255,255,255)).value<QColor>();    // Default white text color
 
     // Initial color setup
     QPalette palette;
-    palette.setColor(QPalette::Base, background_color);
-    palette.setColor(QPalette::Text, text_color_default);
+    palette.setColor(QPalette::Base, _background_color);
+    palette.setColor(QPalette::Text, _text_color_default);
     setPalette(palette);
 
     // Color settings <--

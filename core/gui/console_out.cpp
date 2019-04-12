@@ -12,17 +12,17 @@ console_out::console_out()
     // Reading from QSettings
     QSettings settings;
     settings.beginGroup("console_out");
-    background_color = settings.value("background_color",QColor::fromRgb(0,0,0)).value<QColor>();               // Default black background
-    text_color_default = settings.value("text_color_default", QColor::fromRgb(255,255,255)).value<QColor>();    // Default white text color
-    text_color_warning = settings.value("text_color_warning", QColor::fromRgb(0,255,0)).value<QColor>();
-    text_color_debug = settings.value("text_color_debug", QColor::fromRgb(0,255,255)).value<QColor>();
-    text_color_error = settings.value("text_color_error", QColor::fromRgb(255,255,0)).value<QColor>();
-    text_color_critical = settings.value("text_color_critical", QColor::fromRgb(255,0,0)).value<QColor>();
+    _background_color = settings.value("background_color",QColor::fromRgb(0,0,0)).value<QColor>();               // Default black background
+    _text_color_default = settings.value("text_color_default", QColor::fromRgb(255,255,255)).value<QColor>();    // Default white text color
+    _text_color_warning = settings.value("text_color_warning", QColor::fromRgb(0,255,0)).value<QColor>();
+    _text_color_debug = settings.value("text_color_debug", QColor::fromRgb(0,255,255)).value<QColor>();
+    _text_color_error = settings.value("text_color_error", QColor::fromRgb(255,255,0)).value<QColor>();
+    _text_color_critical = settings.value("text_color_critical", QColor::fromRgb(255,0,0)).value<QColor>();
 
     // Initial color setup
     set_type(logger::LOG_TYPE::LOGT_DEFAULT);   // Setting default text color
     QPalette palette;
-    palette.setColor(QPalette::Base, background_color);
+    palette.setColor(QPalette::Base, _background_color);
     setPalette(palette);    // Setting default background color
     // Color settings <--
 
@@ -41,20 +41,20 @@ void console_out::set_type(logger::LOG_TYPE type)
     switch (type)
     {
         case logger::LOG_TYPE::LOGT_ERROR:
-            setTextColor(text_color_error);
+            setTextColor(_text_color_error);
             break;
         case logger::LOG_TYPE::LOGT_CRITICAL:
-        setTextColor(text_color_critical);
+        setTextColor(_text_color_critical);
             break;
         case logger::LOG_TYPE::LOGT_WARNING:
-        setTextColor(text_color_warning);
+        setTextColor(_text_color_warning);
             break;
         case logger::LOG_TYPE::LOGT_DEBUG:
-        setTextColor(text_color_debug);
+        setTextColor(_text_color_debug);
             break;
         default:
         case logger::LOG_TYPE::LOGT_DEFAULT:
-        setTextColor(text_color_default);
+        setTextColor(_text_color_default);
             break;
     }
 }
