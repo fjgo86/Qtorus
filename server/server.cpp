@@ -1,7 +1,9 @@
 #include "server.h"
+#include "core/config/config.h"
 #include "core/logger/logger.h"
 #include "network/network.h"
 
+Config g_Cfg;
 
 Server::Server(QObject *parent) : QThread(parent)
 {
@@ -17,7 +19,7 @@ void Server::run()
     LOG("Starting server...\n");
     _run = true;
     Network *net = Network::getInstance();
-    net->init(this);
+    net->init();
     connect(this, SIGNAL(finished()), this, SLOT(stop()));   // Handles any stop signal and call stop
 
     if (_run == true)

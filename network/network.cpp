@@ -1,5 +1,6 @@
 #include "network.h"
 #include "server/server.h"
+#include "core/config/config.h"
 #include "core/logger/logger.h"
 #include <QSettings>
 
@@ -39,10 +40,8 @@ void Network::start()
 
 void Network::init()
 {
-    QSettings settings;
-    settings.beginGroup("network");
-    _ip = settings.value("servip","192.168.1.77").toString();
-    _port = settings.value("servport",2595).toInt();
+    _ip = g_Cfg.servIP();
+    _port = g_Cfg.servPort();
 }
 
 Network *Network::getInstance()
